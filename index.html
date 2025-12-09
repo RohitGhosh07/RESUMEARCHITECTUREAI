@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeArchitect AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lato:wght@400;700&family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&family=Oswald:wght@400;500;700&family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              serif: ['Merriweather', 'serif'],
+              playfair: ['Playfair Display', 'serif'],
+              roboto: ['Roboto', 'sans-serif'],
+              lato: ['Lato', 'sans-serif'],
+              oswald: ['Oswald', 'sans-serif'],
+              source: ['Source Code Pro', 'monospace'],
+              open: ['Open Sans', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#f0fdfa',
+                100: '#ccfbf1',
+                200: '#99f6e4',
+                300: '#5eead4',
+                400: '#2dd4bf',
+                500: '#14b8a6',
+                600: '#0d9488',
+                700: '#0f766e',
+                800: '#115e59',
+                900: '#134e4a',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      /* Print Styles for PDF Generation */
+      @media print {
+        @page {
+          margin: 0;
+          size: auto;
+        }
+
+        /* Reset all layout constraints that might clip content */
+        body, html, #root, .app-container {
+          height: auto !important;
+          width: 100% !important;
+          overflow: visible !important;
+          position: static !important;
+          background: white !important;
+        }
+
+        /* Hide the main app UI */
+        body * {
+          visibility: hidden;
+        }
+
+        /* Show only the printable content */
+        #printable-content, #printable-content * {
+          visibility: visible;
+        }
+        
+        #printable-strategy, #printable-strategy * {
+            visibility: visible;
+        }
+
+        /* Position the content at the top left of the page */
+        #printable-content, #printable-strategy {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          margin: 0;
+          padding: 1.5cm; /* Paper padding */
+          background: white;
+          color: black;
+          z-index: 9999;
+        }
+
+        /* Ensure links aren't blue/underlined if undesired, but keeping them is usually okay */
+        
+        /* Hide non-printable elements explicitly if needed */
+        .no-print {
+          display: none !important;
+        }
+      }
+
+      .markdown-body ul {
+        list-style-type: disc;
+        padding-left: 1.5em;
+        margin-bottom: 1em;
+      }
+      .markdown-body ol {
+        list-style-type: decimal;
+        padding-left: 1.5em;
+        margin-bottom: 1em;
+      }
+      .markdown-body h1 {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+      }
+      .markdown-body h2 {
+        font-size: 1.25em;
+        font-weight: 600;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+      }
+      .markdown-body h3 {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+      }
+      .markdown-body p {
+        margin-bottom: 1em;
+        line-height: 1.6;
+      }
+      .markdown-body strong {
+        font-weight: 600;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.32.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-50 text-slate-900 h-screen overflow-hidden">
+    <div id="root" class="h-full app-container"></div>
+  </body>
+</html>
